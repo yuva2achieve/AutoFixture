@@ -52,15 +52,12 @@ namespace Ploeh.AutoFixture.Xunit.UnitTest
         }
 
         [Fact]
-        public void GetCustomizationWithSpecificRegisteredTypeReturnsCorrectResult()
+        public void GetCustomizationWithSpecificTypeShouldReturnCorrectResult()
         {
             // Fixture setup
             var registeredType = typeof(AbstractType);
             var sut = new FrozenAttribute { As = registeredType };
-            var parameter = typeof(TypeWithConcreteParameterMethod)
-                .GetMethod("DoSomething", new[] { typeof(ConcreteType) })
-                .GetParameters()
-                .Single();
+            var parameter = AParameter<ConcreteType>();
             // Exercise system
             var result = sut.GetCustomization(parameter);
             // Verify outcome
@@ -70,15 +67,12 @@ namespace Ploeh.AutoFixture.Xunit.UnitTest
         }
 
         [Fact]
-        public void GetCustomizationWithIncompatibleRegisteredTypeThrowsArgumentException()
+        public void GetCustomizationWithIncompatibleSpecificTypeThrowsArgumentException()
         {
             // Fixture setup
             var registeredType = typeof(string);
             var sut = new FrozenAttribute { As = registeredType };
-            var parameter = typeof(TypeWithConcreteParameterMethod)
-                .GetMethod("DoSomething", new[] { typeof(ConcreteType) })
-                .GetParameters()
-                .Single();
+            var parameter = AParameter<ConcreteType>();
             // Exercise system and verify outcome
             Assert.Throws<ArgumentException>(() => sut.GetCustomization(parameter));
             // Teardown
