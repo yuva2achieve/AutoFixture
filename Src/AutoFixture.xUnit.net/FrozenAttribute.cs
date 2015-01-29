@@ -34,8 +34,12 @@ namespace Ploeh.AutoFixture.Xunit
                 throw new ArgumentNullException("parameter");
             }
 
-            var targetType = parameter.ParameterType;
-            return new FreezingCustomization(targetType, As ?? targetType);
+            return FreezeAsType(parameter.ParameterType);
+        }
+
+        private ICustomization FreezeAsType(Type targetType)
+        {
+            return new FreezingCustomization(targetType, this.As ?? targetType);
         }
     }
 }
