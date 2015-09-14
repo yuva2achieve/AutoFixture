@@ -120,7 +120,7 @@ namespace Ploeh.AutoFixture.Xunit.UnitTest
         public void GetCustomizationWithMatchingByDirectBaseTypeShouldMatchByBaseType()
         {
             // Fixture setup
-            var sut = new FrozenAttribute { By = Matching.DirectBaseType };
+            var sut = new FrozenAttribute(Matching.DirectBaseType);
             // Exercise system
             var customization = sut.GetCustomization(AParameter<object>());
             // Verify outcome
@@ -134,7 +134,7 @@ namespace Ploeh.AutoFixture.Xunit.UnitTest
         public void GetCustomizationWithMatchingByImplementedInterfacesShouldMatchByImplementedInterfaces()
         {
             // Fixture setup
-            var sut = new FrozenAttribute { By = Matching.ImplementedInterfaces };
+            var sut = new FrozenAttribute(Matching.ImplementedInterfaces);
             // Exercise system
             var customization = sut.GetCustomization(AParameter<object>());
             // Verify outcome
@@ -148,7 +148,7 @@ namespace Ploeh.AutoFixture.Xunit.UnitTest
         public void GetCustomizationWithMatchingByParameterNameShouldMatchByParameter()
         {
             // Fixture setup
-            var sut = new FrozenAttribute { By = Matching.ParameterName, TargetName = "parameter" };
+            var sut = new FrozenAttribute(Matching.ParameterName, "parameter");
             // Exercise system
             var customization = sut.GetCustomization(AParameter<object>());
             // Verify outcome
@@ -162,7 +162,7 @@ namespace Ploeh.AutoFixture.Xunit.UnitTest
         public void GetCustomizationWithMatchingByPropertyNameShouldMatchByProperty()
         {
             // Fixture setup
-            var sut = new FrozenAttribute { By = Matching.PropertyName, TargetName = "Property" };
+            var sut = new FrozenAttribute(Matching.PropertyName, "Property");
             // Exercise system
             var customization = sut.GetCustomization(AParameter<object>());
             // Verify outcome
@@ -176,7 +176,7 @@ namespace Ploeh.AutoFixture.Xunit.UnitTest
         public void GetCustomizationWithMatchingByFieldNameShouldMatchByField()
         {
             // Fixture setup
-            var sut = new FrozenAttribute { By = Matching.FieldName, TargetName = "Field" };
+            var sut = new FrozenAttribute(Matching.FieldName, "Field");
             // Exercise system
             var customization = sut.GetCustomization(AParameter<object>());
             // Verify outcome
